@@ -1,0 +1,31 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Editar diretor</div>
+        <div class="card-body">
+            <form method="POST" action="/diretores/alterar">
+                <input type="hidden" name="id" value="<%= diretor.id %>">
+                <div class="form-floating mb-3">
+                    <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome do diretor" value="<%= diretor.nome %>" required>
+                    <label for="nome">Nome do diretor</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" name="nascimento" class="form-control" id="nascimento" placeholder="Data de Nascimento" value="<%= diretor.nascimento %>" required>
+                    <label for="nascimento">Data de Nascimento</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="date" name="morte" class="form-control" id="morte" placeholder="Data da Morte" value="<%= diretor.morte %>" >
+                    <label for="senha">Data da Morte</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="/diretores" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

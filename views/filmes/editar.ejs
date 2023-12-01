@@ -1,0 +1,67 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Editar anime</div>
+        <div class="card-body">
+            <form method="POST" action="/filmes/alterar">
+                <input type="hidden" name="id" value="<%= filme.id %>">
+                <div class="form-floating mb-3">
+                    <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título do filme" value="<%= filme.titulo %>" required>
+                    <label for="filme">Título do anime</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-control" name="diretoreId" id="diretoreId">
+                        <% diretores.forEach(diretor => { 
+                            if(diretor.id == filme.diretoreId) {%>
+                            <option value="<%= diretor.id %>" selected><%= diretor.nome %></option>
+                            <% 
+                            }
+                            else
+                            {%>
+                            <option value="<%= diretor.id %>"><%= diretor.nome %></option>
+                        <%}})%>
+                    </select>
+                    <label for="diretoreId">Selecione o diretor</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-control" name="generoId" id="generoId">
+                        <% generos.forEach(genero => { 
+                            if(genero.id == filme.generoId) {%>
+                            <option value="<%= genero.id %>" selected><%= genero.genero %></option>
+                            <%
+                            }
+                            else
+                            {
+                            %>
+                            <option value="<%= genero.id %>"><%= genero.genero %></option>
+                        <%}})%>
+                    </select>
+                    <label for="generoId">Selecione o genero</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-control" name="produtoreId" id="produtoreId">
+                        <% produtores.forEach(produtor => { 
+                            if(produtor.id == filme.produtoreId) {%>
+                            <option value="<%= produtor.id %>" selected><%= produtor.nome %></option>
+                            <%
+                            }
+                            else
+                            {
+                            %>
+                            <option value="<%= produtor.id %>"><%= produtor.nome %></option>
+                        <%}})%>
+                    </select>
+                    <label for="produtoreId">Selecione a produtora</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <a href="/filmes" class="btn btn-warning">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

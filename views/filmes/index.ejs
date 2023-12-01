@@ -1,0 +1,31 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+<br>
+<div class="container">
+    <a href="/filmes/novo" class="btn btn-primary">Novo anime</a>
+    <br>
+    <div class="card">
+        <div class="card-header">Animes cadastrados</div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Título</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    <% filmes.forEach(filme => { %>
+                        <tr>
+                            <td><%= filme.titulo %> (<%= filme.diretore.nome %>)</td>
+                            <td>
+                                <a href="/filmes/editar/<%= filme.id %>" class="btn btn-primary">Editar</a> 
+                                <a href="/filmes/excluir/<%= filme.id %>" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

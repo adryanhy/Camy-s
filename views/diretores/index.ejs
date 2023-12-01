@@ -1,0 +1,31 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+<br>
+<div class="container">
+    <a href="/diretores/novo" class="btn btn-primary">Novo diretor</a>
+    <br>
+    <div class="card">
+        <div class="card-header">Diretores cadastrados</div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Nome do diretor</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    <% diretores.forEach(diretor => { %>
+                        <tr>
+                            <td><%= diretor.nome %></td>
+                            <td>
+                                <a href="/diretores/editar/<%= diretor.id %>" class="btn btn-primary">Editar</a> 
+                                <a href="/diretores/excluir/<%= diretor.id %>" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

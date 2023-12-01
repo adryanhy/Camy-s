@@ -1,0 +1,31 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+<br>
+<div class="container">
+    <a href="/produtores/novo" class="btn btn-primary">Nova produtor</a>
+    <br>
+    <div class="card">
+        <div class="card-header">Produtores cadastrados</div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <th>Nome da produtor</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    <% produtores.forEach(produtor => { %>
+                        <tr>
+                            <td><%= produtor.nome %></td>
+                            <td>
+                                <a href="/produtores/editar/<%= produtor.id %>" class="btn btn-primary">Editar</a> 
+                                <a href="/produtores/excluir/<%= produtor.id %>" class="btn btn-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>
